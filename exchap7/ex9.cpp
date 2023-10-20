@@ -57,12 +57,15 @@ int getinfo(student pa[],int n){
     for ( i ; i < n; i++){
         cout<<"Student NO."<<i+1<<" :"<<endl;
         cout<<"Name :";
-        if (!(cin.get(pa[i].fullname,SLEN).get())) break;
+        cin.getline(pa[i].fullname,SLEN);
+        if (pa[i].fullname[0]=='\0'||pa[i].fullname[0]==' ')
+        {
+            break;
+        }
         cout<<"hobby :";
-        cin.get(pa[i].hobby,SLEN).get();
+        cin.getline(pa[i].hobby,SLEN);
         cout<<"Ooplevel :";
-        cin>>pa[i].ooplevel;
-        cin.get();
+        (cin>>pa[i].ooplevel).get();
         cout<<'\n';
     }
     return i;
