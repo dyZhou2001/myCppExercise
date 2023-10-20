@@ -15,14 +15,15 @@ bool startGamble();
 void calcuMoney(bool result,long double &gmoney);
 void showInformation();
 
+double const probability=0.43;
 long double iMoney=100000;
-long double eMoney=150000;
+long double eMoney=200000;
 int const sMoney=100;
 long double gmoney=sMoney;
 int count=0;
 bool result;
-default_random_engine e(19734682);
-uniform_int_distribution<unsigned> u(0,9); 
+default_random_engine e(56928);
+uniform_int_distribution<unsigned> u(0,9999); 
 
 int main(){
     cout<<"---------------GAME START---------------"<<endl;
@@ -46,16 +47,14 @@ int main(){
 bool startGamble(){
     count++;
     int randout=u(e);
-    switch (randout)
-    {
-    case 0:
-    case 1:
-    case 2:
-    case 3:
-    cout<<"You win!"<<endl;
-        return true;
     
-    default:
+    if (randout<(probability*10000))
+    {
+        cout<<"You win!"<<endl;
+        return true;
+    }
+    else
+    {
         cout<<"You lose, try again."<<endl;
         return false;
     }
